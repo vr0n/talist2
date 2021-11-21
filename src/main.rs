@@ -273,7 +273,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                           [Constraint::Percentage(25), Constraint::Percentage(80)].as_ref(), // First constraint is ticket name
                       )
                       .split(chunks[1]);
-                  let (left, center, right) = render_tickets(&ticket_list_state, board.to_string());
+                  let (left, right) = render_tickets(&ticket_list_state, board.to_string());
                   rect.render_stateful_widget(left, tickets_chunks[0], &mut ticket_list_state);
                   rect.render_widget(right, tickets_chunks[1]);
               }
@@ -520,7 +520,7 @@ fn render_tickets<'a>(tickets_list_state: &ListState, board: String) -> (List<'a
     ])
     .column_spacing(2);
 
-    (list, ticket_task, ticket_detail)
+    (list, ticket_detail)
 }
 
 //fn add_random_ticket_to_db() -> Result<Vec<Ticket>, Error> {
